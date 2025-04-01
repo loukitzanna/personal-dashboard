@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./src",
+        "jsx": "react",
+        "module": "ESNext",
+        "moduleResolution": "Node",
+        "paths": {
+            "~*": [
+                "./*"
+            ]
+        },
+        "strict": true,
+        "target": "ES2020",
+        "esModuleInterop": true,
+        "allowJs": true,
+        "resolveJsonModule": true,
+        "noImplicitAny": false
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "ts-node": {
+        "esm": true,
+        "experimentalSpecifierResolution": "node"
+    }
+}
