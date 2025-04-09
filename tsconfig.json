@@ -17,14 +17,14 @@
         "esModuleInterop": true,
         "allowJs": true,
         "resolveJsonModule": true,
-        "noImplicitAny": false
+        "noImplicitAny": false,
+        "typeRoots": ["./node_modules/@types", "./src/types", "./src/bff/types"]
     },
     "include": [
         "src/**/*"
     ],
     "exclude": [
-        "node_modules",
-        "src/bff"
+        "node_modules"
     ],
     "ts-node": {
         "esm": true,

@@ -34,7 +34,7 @@ const transformer = (settings: { units: string }, data: any) => {
 
 export const weatherResolver: QueryResolvers = {
     Query: {
-        getWeather: async (_parent: unknown, { location, units }: { location: string; units: string }) => {
+        weather: async (_parent: unknown, { location, units }: { location: string; units: string }) => {
             try {
                 // Use process.env directly since it's loaded at server startup
                 const response = await fetch(
@@ -46,7 +46,6 @@ export const weatherResolver: QueryResolvers = {
                 }
 
                 const data = await response.json();
-                console.log('👾 Weather data:', data);
 
                 return transformer({ units }, data);
             } catch (error) {

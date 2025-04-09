@@ -7,6 +7,7 @@ import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHt
 import { fastifyApolloDrainPlugin, fastifyApolloHandler } from '@as-integrations/fastify';
 import { typeDefs } from './schemaLoader.js';
 import { weatherResolver } from './resolvers/weatherResolver.js';
+import { stocksResolver } from './resolvers/stocksResolver.js';
 
 // Get the directory name of the current module
 const __filename = fileURLToPath(import.meta.url);
@@ -26,6 +27,7 @@ async function startServer() {
             resolvers: {
                 Query: {
                     ...weatherResolver.Query,
+                    ...stocksResolver,
                 },
             },
             plugins: [

@@ -17,6 +17,20 @@ type ForecastDay {
     icon: String
 }
 
+type StockData {
+    price: Float
+    change: Float
+    changePercent: Float
+    timestamp: String
+    historical: [HistoricalData]
+}
+
+type HistoricalData {
+    price: Float
+    timestamp: String
+}
+
 type Query {
-    getWeather(location: String!, units: String!): Weather
+    weather(location: String!, units: String!): Weather
+    stocks(symbol: String!, timeRange: String!): StockData
 }

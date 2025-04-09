@@ -25,14 +25,34 @@ export type ForecastDay = {
   minTemp?: Maybe<Scalars['Float']['output']>;
 };
 
+export type HistoricalData = {
+  price?: Maybe<Scalars['Float']['output']>;
+  timestamp?: Maybe<Scalars['String']['output']>;
+};
+
 export type Query = {
-  getWeather?: Maybe<Weather>;
+  stocks?: Maybe<StockData>;
+  weather?: Maybe<Weather>;
 };
 
 
-export type QueryGetWeatherArgs = {
+export type QueryStocksArgs = {
+  symbol: Scalars['String']['input'];
+  timeRange: Scalars['String']['input'];
+};
+
+
+export type QueryWeatherArgs = {
   location: Scalars['String']['input'];
   units: Scalars['String']['input'];
+};
+
+export type StockData = {
+  change?: Maybe<Scalars['Float']['output']>;
+  changePercent?: Maybe<Scalars['Float']['output']>;
+  historical?: Maybe<Array<Maybe<HistoricalData>>>;
+  price?: Maybe<Scalars['Float']['output']>;
+  timestamp?: Maybe<Scalars['String']['output']>;
 };
 
 export type Weather = {
@@ -121,8 +141,10 @@ export type ResolversTypes = ResolversObject<{
   Boolean: ResolverTypeWrapper<Scalars['Boolean']['output']>;
   Float: ResolverTypeWrapper<Scalars['Float']['output']>;
   ForecastDay: ResolverTypeWrapper<ForecastDay>;
+  HistoricalData: ResolverTypeWrapper<HistoricalData>;
   Int: ResolverTypeWrapper<Scalars['Int']['output']>;
   Query: ResolverTypeWrapper<{}>;
+  StockData: ResolverTypeWrapper<StockData>;
   String: ResolverTypeWrapper<Scalars['String']['output']>;
   Weather: ResolverTypeWrapper<Weather>;
 }>;
@@ -132,8 +154,10 @@ export type ResolversParentTypes = ResolversObject<{
   Boolean: Scalars['Boolean']['output'];
   Float: Scalars['Float']['output'];
   ForecastDay: ForecastDay;
+  HistoricalData: HistoricalData;
   Int: Scalars['Int']['output'];
   Query: {};
+  StockData: StockData;
   String: Scalars['String']['output'];
   Weather: Weather;
 }>;
@@ -147,8 +171,24 @@ export type ForecastDayResolvers<ContextType = Context, ParentType extends Resol
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
+export type HistoricalDataResolvers<ContextType = Context, ParentType extends ResolversParentTypes['HistoricalData'] = ResolversParentTypes['HistoricalData']> = ResolversObject<{
+  price?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  timestamp?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
 export type QueryResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{
-  getWeather?: Resolver<Maybe<ResolversTypes['Weather']>, ParentType, ContextType, RequireFields<QueryGetWeatherArgs, 'location' | 'units'>>;
+  stocks?: Resolver<Maybe<ResolversTypes['StockData']>, ParentType, ContextType, RequireFields<QueryStocksArgs, 'symbol' | 'timeRange'>>;
+  weather?: Resolver<Maybe<ResolversTypes['Weather']>, ParentType, ContextType, RequireFields<QueryWeatherArgs, 'location' | 'units'>>;
+}>;
+
+export type StockDataResolvers<ContextType = Context, ParentType extends ResolversParentTypes['StockData'] = ResolversParentTypes['StockData']> = ResolversObject<{
+  change?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  changePercent?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  historical?: Resolver<Maybe<Array<Maybe<ResolversTypes['HistoricalData']>>>, ParentType, ContextType>;
+  price?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  timestamp?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
 export type WeatherResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Weather'] = ResolversParentTypes['Weather']> = ResolversObject<{
@@ -165,7 +205,9 @@ export type WeatherResolvers<ContextType = Context, ParentType extends Resolvers
 
 export type Resolvers<ContextType = Context> = ResolversObject<{
   ForecastDay?: ForecastDayResolvers<ContextType>;
+  HistoricalData?: HistoricalDataResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
+  StockData?: StockDataResolvers<ContextType>;
   Weather?: WeatherResolvers<ContextType>;
 }>;
 
