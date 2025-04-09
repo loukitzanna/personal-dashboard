@@ -3,15 +3,15 @@ import { useQuery } from '@apollo/client';
 import { GET_WEATHER } from '~/graphql/queries';
 import { formatDate } from '~utils/dates';
 import { useWeatherContext } from './WeatherContext';
+import { Spinner } from '@heroui/react';
 
 const DisplayView = () => {
     const { location, units, showForecast } = useWeatherContext();
-    console.log(location, units, showForecast);
     const { loading, error, data } = useQuery(GET_WEATHER, {
         variables: { location, units },
     });
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <Spinner />;
     if (error) return <p>Error: {error.message}</p>;
     if (!data?.getWeather) return <p>No weather data available</p>;
 
