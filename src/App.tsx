@@ -1,6 +1,6 @@
 import React from 'react';
 import { ApolloProvider } from '@apollo/client';
-import { HeroUIProvider, Switch } from '@heroui/react';
+import { HeroUIProvider, Switch, Image } from '@heroui/react';
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import client from './graphql/client';
 import Dashboard from './components/Dashboard';
@@ -15,6 +15,7 @@ function App() {
                     <div className='min-h-screen bg-gray-50 dark:bg-black'>
                         <header className='bg-white dark:bg-black shadow'>
                             <div className='max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex justify-between items-center'>
+                                <Image src='/assets/logo.svg' alt='Logo' className='w-16 h-16' />
                                 <h1 className='text-3xl font-bold text-gray-900 dark:text-white'>
                                     Welcome to your Dashboard!
                                 </h1>

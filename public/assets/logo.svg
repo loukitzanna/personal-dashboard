@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="23 10 445 478" width="450px" height="450px" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <linearGradient id="color-2-0" href="#color-2" gradientUnits="userSpaceOnUse" x1="257.933" y1="412.696" x2="257.933" y2="457.652"/>
+    <linearGradient bx:pinned="true" id="color-2">
+      <stop style="stop-color: #ff9966;" offset="0"/>
+      <stop style="stop-color: #ff5e62;" offset="1"/>
+    </linearGradient>
+    <linearGradient id="color-2-1" href="#color-2" gradientUnits="userSpaceOnUse" x1="245.469" y1="14.634" x2="245.469" y2="477.903"/>
+    <linearGradient id="color-2-2" href="#color-2" gradientUnits="userSpaceOnUse" x1="108.807" y1="201.682" x2="108.807" y2="255.49"/>
+    <linearGradient id="color-2-3" href="#color-2" gradientUnits="userSpaceOnUse" x1="108.807" y1="169.132" x2="108.807" y2="190.915"/>
+    <linearGradient id="color-2-4" href="#color-2" gradientUnits="userSpaceOnUse" x1="143.407" y1="179.642" x2="143.407" y2="197.222"/>
+    <linearGradient id="color-2-5" href="#color-2" gradientUnits="userSpaceOnUse" x1="72.124" y1="183.842" x2="72.124" y2="199.513"/>
+    <linearGradient id="color-2-6" href="#color-2" gradientUnits="userSpaceOnUse" x1="60.893" y1="228.394" x2="60.893" y2="228.777" gradientTransform="matrix(0.051669, -0.998665, 46.652699, 2.413718, -10608.820312, -268.028961)"/>
+    <linearGradient id="color-2-7" href="#color-2" gradientUnits="userSpaceOnUse" x1="154.147" y1="228.416" x2="154.147" y2="228.754" gradientTransform="matrix(0.016425, 0.999865, -60.873295, 1, 14063.088867, -149.253235)"/>
+    <linearGradient id="color-2-8" href="#color-2" gradientUnits="userSpaceOnUse" x1="108.807" y1="262.567" x2="108.807" y2="284.35"/>
+    <linearGradient id="color-2-9" href="#color-2" gradientUnits="userSpaceOnUse" x1="148.423" y1="254.492" x2="148.423" y2="273.981" gradientTransform="matrix(1, 0, 0, 1, 0, -0.000017)"/>
+    <linearGradient id="color-2-10" href="#color-2" gradientUnits="userSpaceOnUse" x1="72.623" y1="257.124" x2="72.623" y2="275.284" gradientTransform="matrix(1, 0, 0, 1, 0, -0.00002)"/>
+    <linearGradient id="color-2-11" href="#color-2" gradientUnits="userSpaceOnUse" x1="180.789" y1="326.162" x2="180.789" y2="389.57"/>
+  </defs>
+  <g transform="matrix(1, 0, 0, 1, 5.684341886080802e-14, 0)">
+    <path style="stroke-width: 3px; stroke: url(&quot;#color-2-0&quot;);" d="M 96.613 412.696 C 204.159 412.696 311.706 412.696 419.252 412.696 M 165.261 457.652 C 227.361 457.374 289.462 457.097 351.562 456.819 M 126.479 436.11 L 390.927 436.11"/>
+  </g>
+  <path d="M 257.897 477.903 C 129.968 477.903 26.263 374.197 26.263 246.267 C 26.263 118.339 129.968 14.634 257.897 14.634 C 265.72 14.634 273.452 15.022 281.076 15.78 C 250.893 31.485 225.432 55.013 207.378 83.674 C 201.927 75.309 189.66 69.376 178.409 69.612 C 159.93 70.002 154.757 83.392 151.155 93.311 C 140.817 81.693 125.243 90.525 128.708 108.365 C 116.012 109.697 108.682 112.285 109.243 120.466 C 109.893 129.891 123.506 129.599 135.63 125.81 C 137.911 132.643 142.9 139.613 152.388 139.613 C 158.937 139.613 163.266 138.015 166.676 129.143 C 167.55 142.293 176.64 144.658 182.355 142.308 C 182.582 142.214 182.811 142.12 183.039 142.025 C 179.813 155.941 178.107 170.439 178.107 185.336 C 178.107 290.83 263.627 376.35 369.122 376.35 C 403.932 376.35 436.568 367.039 464.675 350.769 C 426.48 426.197 348.225 477.903 257.897 477.903 M 240.913 327.605 C 231.298 334.925 204.309 336.615 201.336 328.325 C 196.905 335.099 185.55 332.233 185.281 325.452 C 185.206 323.541 185.811 321.45 186.76 319.321 C 179.268 318.736 174.145 315.772 173.7 309.167 C 173.33 303.66 181.988 299.042 193.025 297.955 C 193.01 297.751 193.003 297.543 193.003 297.333 C 193.003 291.219 199.226 286.262 206.902 286.262" style="paint-order: fill; fill-opacity: 0; stroke-width: 4px; stroke: url(&quot;#color-2-1&quot;);" transform="matrix(1, 0, 0, 1, 5.684341886080802e-14, 0)"/>
+  <g transform="matrix(1, 0, 0, 1, 5.684341886080802e-14, 0)">
+    <title>sun</title>
+    <ellipse style="stroke-width: 4px; fill-opacity: 0; stroke-linecap: round; stroke: url(&quot;#color-2-2&quot;);" cx="108.807" cy="228.586" rx="27.189" ry="26.904"/>
+    <path style="stroke-width: 4px; stroke-linecap: round; stroke: url(&quot;#color-2-3&quot;);" d="M 108.614 190.915 L 109 169.132"/>
+    <path style="stroke-width: 4px; stroke-linecap: round; stroke: url(&quot;#color-2-4&quot;);" d="M 136.263 197.222 L 150.551 179.642"/>
+    <path style="stroke-width: 4px; stroke-linecap: round; stroke: url(&quot;#color-2-5&quot;); transform-origin: 72.073px 191.678px 0px;" d="M 63.627 183.842 L 80.62 199.513"/>
+    <path style="stroke-width: 4px; stroke-linecap: round; stroke: url(&quot;#color-2-6&quot;); transform-origin: 60.826px 228.586px 0px;" d="M 49.499 228.394 L 72.286 228.777" transform="matrix(-1, 0, 0, -1, 0, 0)"/>
+    <path style="stroke-width: 4px; stroke-linecap: round; stroke: url(&quot;#color-2-7&quot;); transform-origin: 154.089px 228.586px 0px;" d="M 144.105 228.416 L 164.19 228.754" transform="matrix(-1, 0, 0, -1, 0, 0)"/>
+    <path style="stroke-width: 4px; stroke-linecap: round; stroke: url(&quot;#color-2-8&quot;);" d="M 108.614 262.567 L 109 284.35"/>
+    <path style="stroke-width: 4px; stroke-linecap: round; stroke: url(&quot;#color-2-9&quot;); transform-origin: 148.422px 264.238px 0px;" d="M 139.154 254.492 L 157.691 273.981"/>
+    <path style="stroke-width: 4px; stroke-linecap: round; stroke: url(&quot;#color-2-10&quot;); transform-origin: 72.569px 266.205px 0px;" d="M 63.295 275.284 L 81.951 257.124"/>
+  </g>
+  <path style="stroke-width: 4px; fill-opacity: 0; stroke-linecap: round; stroke: url(&quot;#color-2-11&quot;);" d="M 57.832 361.036 L 113.072 326.162 L 182.734 389.57 L 227.834 360.991 L 282.313 374.834 L 303.746 365.01" transform="matrix(1, 0, 0, 1, 5.684341886080802e-14, 0)"/>
+</svg>
