@@ -30,7 +30,7 @@ const DisplayView = () => {
                 <p className='text-2xl'>{getWeather.temperature}°C</p>
                 <p className='text-gray-600'>{getWeather.condition}</p>
                 <p className='text-sm text-gray-500'>
-                    Humidity: {getWeather.humidity}% | Wind: {getWeather.windSpeed} km/h
+                    Humidity: {getWeather.humidity}% | Wind: {getWeather.windSpeed} {units === 'metric' ? 'km' : 'mi'}/h
                 </p>
             </div>
 

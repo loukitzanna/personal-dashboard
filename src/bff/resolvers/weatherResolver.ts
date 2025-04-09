@@ -1,6 +1,7 @@
 import { QueryResolvers } from '../generated/graphql.js';
 
 const transformer = (settings: { units: string }, data: any) => {
+    const useMetric = settings.units === 'metric';
     // Transform to our schema format
     const transformedData = {
         location: data.location.name,
@@ -10,12 +11,23 @@ const transformer = (settings: { units: string }, data: any) => {
         humidity: data.current.humidity,
         windSpeed: data.current.wind_kph,
         description: data.current.condition.text,
+        forecast: data.forecast?.forecastday?.map((day: any) => {
+            return {
+                date: day.date,
+                minTemp: useMetric ? day.day.mintemp_c : day.day.mintemp_f,
+                maxTemp: useMetric ? day.day.maxtemp_c : day.day.maxtemp_f,
+                condition: day.day.condition.text,
+                icon: day.day.condition.icon,
+            };
+        }),
     };
 
-    if (settings.units === 'metric') {
+    if (useMetric) {
         transformedData.temperature = data.current.temp_c;
+        transformedData.windSpeed = data.current.wind_kph;
     } else {
         transformedData.temperature = data.current.temp_f;
+        transformedData.windSpeed = data.current.wind_mph;
     }
     return transformedData;
 };
@@ -46,9 +58,3 @@ export const weatherResolver: QueryResolvers = {
 };
 
 export default weatherResolver;
-        }
-    }
-};
-
-export default weatherResolver;
-
