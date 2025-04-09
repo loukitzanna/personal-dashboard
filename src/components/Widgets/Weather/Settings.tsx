@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useWeatherContext } from './WeatherContext';
 import { Button, Form, Input, Switch } from '@heroui/react';
-import { FolderIcon } from '@heroicons/react/20/solid';
 
 const WeatherSettings = () => {
     // value true is imperial, false is metric
@@ -17,8 +16,8 @@ const WeatherSettings = () => {
                     value={inputLocation}
                     onChange={(e) => setInputLocation(e.target.value)}
                 />
-                <Button size='sm' isIconOnly onPress={() => setLocation(inputLocation)}>
-                    <FolderIcon className='h-[20px]' />
+                <Button size='sm' onPress={() => setLocation(inputLocation)}>
+                    Save
                 </Button>
             </div>
             <div className='setting-row flex items-center gap-2'>

@@ -6,6 +6,7 @@ import { useWeatherContext } from './WeatherContext';
 
 const DisplayView = () => {
     const { location, units, showForecast } = useWeatherContext();
+    console.log(location, units, showForecast);
     const { loading, error, data } = useQuery(GET_WEATHER, {
         variables: { location, units },
     });
@@ -23,7 +24,9 @@ const DisplayView = () => {
         <div className='p-4 '>
             <div className='mb-4'>
                 <h2 className='text-xl font-bold'>{getWeather.location}</h2>
-                <p className='text-2xl'>{getWeather.temperature}°C</p>
+                <p className='text-2xl'>
+                    {getWeather.temperature}°{units === 'metric' ? 'C' : 'F'}
+                </p>
                 <p className='text-gray-600'>{getWeather.condition}</p>
                 <p className='text-sm text-gray-500'>
                     Humidity: {getWeather.humidity}% | Wind: {getWeather.windSpeed} {units === 'metric' ? 'km' : 'mi'}/h
