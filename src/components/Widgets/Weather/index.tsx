@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
+import { Button, Card, CardHeader, CardBody, Divider } from '@heroui/react';
+import { ArrowUturnLeftIcon, Cog6ToothIcon } from '@heroicons/react/24/outline';
 import DisplayView from './Display';
 import WeatherSettings from './Settings';
-import { Button, Card, CardHeader, CardBody, Divider, CardFooter } from '@heroui/react';
-import { ArrowUturnLeftIcon, Cog6ToothIcon } from '@heroicons/react/24/outline';
 import { useWeatherContext, WeatherProvider } from './WeatherContext';
 
 // view types
 type View = 'display' | 'settings';
 
 const WeatherWidget = () => {
-    const [view, setView] = useState<View>('settings');
+    const [view, setView] = useState<View>('display');
     const context = useWeatherContext();
 
     const handleViewChange = () => {
