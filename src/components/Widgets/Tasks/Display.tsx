@@ -2,11 +2,13 @@ import React from 'react';
 import { useTasksContext } from './TasksContext';
 import { Button, Checkbox, Divider } from '@heroui/react';
 import { TrashIcon } from '@heroicons/react/24/outline';
+import WarningMessage from '~ui/WarningMessage';
 
 const DisplayView = () => {
     const { tasks, updateTask, removeTask } = useTasksContext();
     return (
         <div className='p-4 flex flex-col gap-2'>
+            {!tasks.length && <WarningMessage message='No tasks created yet' />}
             {tasks.map((task) => (
                 <div key={task.id}>
                     <div className='flex items-center justify-between gap-2 py-2'>

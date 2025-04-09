@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 export const GET_WEATHER = gql`
     query GetWeather($location: String!, $units: String!) {
-        getWeather(location: $location, units: $units) {
+        weather(location: $location, units: $units) {
             location
             temperature
             condition

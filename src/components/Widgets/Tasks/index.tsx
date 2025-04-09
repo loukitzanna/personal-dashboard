@@ -24,8 +24,10 @@ const TasksWidget = () => {
                     className='flex flex-row items-center justify-between gap-2 w-full'
                     onSubmit={(e) => {
                         e.preventDefault();
-                        addTask({ id: +Date.now(), title: task, completed: false });
-                        setTask('');
+                        if (task.trim()) {
+                            addTask({ id: +Date.now(), title: task, completed: false });
+                            setTask('');
+                        }
                     }}
                 >
                     <Input placeholder='Add Task' value={task} onChange={(e) => setTask(e.target.value)} />
