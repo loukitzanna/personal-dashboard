@@ -20,3 +20,18 @@ export const GET_WEATHER = gql`
         }
     }
 `;
+
+export const GET_STOCKS = gql`
+    query GetStocks($symbol: String!, $timeRange: String!) {
+        stocks(symbol: $symbol, timeRange: $timeRange) {
+            price
+            change
+            changePercent
+            timestamp
+            historical {
+                price
+                timestamp
+            }
+        }
+    }
+`;
