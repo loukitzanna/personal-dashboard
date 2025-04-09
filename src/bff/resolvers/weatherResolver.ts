@@ -1,25 +1,51 @@
-import { QueryResolvers, Weather } from '../generated/graphql.js';
+import { QueryResolvers } from '../generated/graphql.js';
+
+const transformer = (settings: { units: string }, data: any) => {
+    // Transform to our schema format
+    const transformedData = {
+        location: data.location.name,
+        temperature: data.current.temp_c,
+        condition: data.current.condition.text,
+        icon: data.current.condition.icon,
+        humidity: data.current.humidity,
+        windSpeed: data.current.wind_kph,
+        description: data.current.condition.text,
+    };
+
+    if (settings.units === 'metric') {
+        transformedData.temperature = data.current.temp_c;
+    } else {
+        transformedData.temperature = data.current.temp_f;
+    }
+    return transformedData;
+};
 
 export const weatherResolver: QueryResolvers = {
     Query: {
-        getWeather: async (_parent: unknown, { location }: { location: string }) => {
-            // TODO: Implement actual weather API call
-            const mockData: Weather = {
-                location: location,
-                temperature: 22.5,
-                condition: "Partly cloudy",
-                icon: "partly-cloudy",
-                humidity: 65,
-                windSpeed: 12.3,
-                description: "Partly cloudy conditions",
-                forecast: [
-                    { date: "2025-04-01", minTemp: 18, maxTemp: 24, condition: "Sunny", icon: "sunny" },
-                    { date: "2025-04-02", minTemp: 17, maxTemp: 26, condition: "Partly cloudy", icon: "partly-cloudy" },
-                    { date: "2025-04-03", minTemp: 16, maxTemp: 22, condition: "Rain", icon: "rain" }
-                ]
-            };
+        getWeather: async (_parent: unknown, { location, units }: { location: string; units: string }) => {
+            try {
+                // Use process.env directly since it's loaded at server startup
+                const response = await fetch(
+                    `${process.env.WEATHER_API_URL}/forecast.json?key=${process.env.WEATHER_API_KEY}&q=${location}&days=3`
+                );
 
-            return mockData;
+                if (!response.ok) {
+                    throw new Error(`Weather API responded with status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                console.log('👾 Weather data:', data);
+
+                return transformer({ units }, data);
+            } catch (error) {
+                console.error('Error fetching weather data:', error);
+                throw new Error('Failed to fetch weather data');
+            }
+        },
+    },
+};
+
+export default weatherResolver;
         }
     }
 };

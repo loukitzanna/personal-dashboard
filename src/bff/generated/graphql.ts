@@ -32,6 +32,7 @@ export type Query = {
 
 export type QueryGetWeatherArgs = {
   location: Scalars['String']['input'];
+  units: Scalars['String']['input'];
 };
 
 export type Weather = {
@@ -147,7 +148,7 @@ export type ForecastDayResolvers<ContextType = Context, ParentType extends Resol
 }>;
 
 export type QueryResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{
-  getWeather?: Resolver<Maybe<ResolversTypes['Weather']>, ParentType, ContextType, RequireFields<QueryGetWeatherArgs, 'location'>>;
+  getWeather?: Resolver<Maybe<ResolversTypes['Weather']>, ParentType, ContextType, RequireFields<QueryGetWeatherArgs, 'location' | 'units'>>;
 }>;
 
 export type WeatherResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Weather'] = ResolversParentTypes['Weather']> = ResolversObject<{

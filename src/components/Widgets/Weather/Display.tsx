@@ -7,9 +7,9 @@ import { Button } from '@heroui/react';
 import { ArrowUturnLeftIcon } from '@heroicons/react/24/outline';
 
 const DisplayView = () => {
-    const { location } = useWeatherContext();
+    const { location, units } = useWeatherContext();
     const { loading, error, data } = useQuery(GET_WEATHER, {
-        variables: { location },
+        variables: { location, units },
     });
 
     if (loading) return <p>Loading...</p>;
@@ -17,6 +17,7 @@ const DisplayView = () => {
     if (!data?.getWeather) return <p>No weather data available</p>;
 
     const { getWeather } = data;
+    console.log('👾 Weather data:', getWeather);
 
     const refetch = () => {
         client.refetchQueries({ include: [GET_WEATHER] });
