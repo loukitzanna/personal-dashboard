@@ -5,11 +5,22 @@ import { FolderIcon } from '@heroicons/react/20/solid';
 
 const WeatherSettings = () => {
     // value true is imperial, false is metric
-    const { setUnits, units, setLocation, location } = useWeatherContext();
+    const { setUnits, units, setLocation, location, setShowForecast, showForecast } = useWeatherContext();
     const [inputLocation, setInputLocation] = useState(location);
 
     return (
         <div className='flex flex-col gap-5'>
+            <div className='setting-row flex items-center gap-2'>
+                <Input
+                    label='Location'
+                    placeholder='Enter location'
+                    value={inputLocation}
+                    onChange={(e) => setInputLocation(e.target.value)}
+                />
+                <Button size='sm' isIconOnly onPress={() => setLocation(inputLocation)}>
+                    <FolderIcon className='h-[20px]' />
+                </Button>
+            </div>
             <div className='setting-row flex items-center gap-2'>
                 <span>Metric (C)</span>
                 <Switch
@@ -23,15 +34,16 @@ const WeatherSettings = () => {
                 <span>Imperial (F)</span>
             </div>
             <div className='setting-row flex items-center gap-2'>
-                <Input
-                    label='Location'
-                    placeholder='Enter location'
-                    value={inputLocation}
-                    onChange={(e) => setInputLocation(e.target.value)}
-                />
-                <Button size='sm' isIconOnly onPress={() => setLocation(inputLocation)}>
-                    <FolderIcon className='h-[20px]' />
-                </Button>
+                <Switch
+                    size='sm'
+                    defaultSelected={showForecast}
+                    aria-label='show forecast'
+                    onValueChange={(value) => {
+                        setShowForecast(value);
+                    }}
+                >
+                    Show Forecast
+                </Switch>
             </div>
         </div>
     );

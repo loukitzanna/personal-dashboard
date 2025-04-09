@@ -1,13 +1,11 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import client from '~graphql/client';
 import { GET_WEATHER } from '~/graphql/queries';
+import { formatDate } from '~utils/dates';
 import { useWeatherContext } from './WeatherContext';
-import { Button } from '@heroui/react';
-import { ArrowUturnLeftIcon } from '@heroicons/react/24/outline';
 
 const DisplayView = () => {
-    const { location, units } = useWeatherContext();
+    const { location, units, showForecast } = useWeatherContext();
     const { loading, error, data } = useQuery(GET_WEATHER, {
         variables: { location, units },
     });
@@ -17,14 +15,12 @@ const DisplayView = () => {
     if (!data?.getWeather) return <p>No weather data available</p>;
 
     const { getWeather } = data;
-    console.log('👾 Weather data:', getWeather);
 
-    const refetch = () => {
-        client.refetchQueries({ include: [GET_WEATHER] });
-    };
+    // TODO: add a background gradient based on the weather condition
+    // bg-linear-to-r from-cyan-500 to-blue-500
 
     return (
-        <div className='p-4'>
+        <div className='p-4 '>
             <div className='mb-4'>
                 <h2 className='text-xl font-bold'>{getWeather.location}</h2>
                 <p className='text-2xl'>{getWeather.temperature}°C</p>
@@ -34,25 +30,22 @@ const DisplayView = () => {
                 </p>
             </div>
 
-            <div className='mb-4'>
-                <h3 className='font-semibold mb-2'>Forecast</h3>
-                <div className='grid grid-cols-3 gap-2'>
-                    {getWeather.forecast?.map((day) => (
-                        <div key={day.date} className='p-2 border rounded'>
-                            <p className='text-sm'>{day.date}</p>
-                            <p className='text-lg'>
-                                {day.minTemp}° - {day.maxTemp}°
-                            </p>
-                            <p className='text-sm text-gray-600'>{day.condition}</p>
-                        </div>
-                    ))}
+            {showForecast && (
+                <div className='mb-4'>
+                    <h3 className='font-semibold mb-2'>Forecast</h3>
+                    <div className='grid grid-cols-3 gap-2'>
+                        {getWeather.forecast?.map((day) => (
+                            <div key={day.date} className='p-2 border rounded'>
+                                <p className='text-sm'>{formatDate(day.date)}</p>
+                                <p className='text-lg'>
+                                    {day.minTemp}° - {day.maxTemp}°
+                                </p>
+                                <p className='text-sm text-gray-600'>{day.condition}</p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
-            </div>
-
-            <Button onPress={refetch} className='mt-4'>
-                <ArrowUturnLeftIcon className='w-5 h-5' />
-                Refresh
-            </Button>
+            )}
         </div>
     );
 };
