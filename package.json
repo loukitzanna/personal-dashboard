@@ -2,6 +2,7 @@
   "name": "personal-dashboard",
   "version": "0.1.0",
   "description": "",
+  "type": "module",
   "scripts": {
     "start": "vite",
     "build": "vite build",
@@ -10,24 +11,31 @@
     "typewatch": "tsc --noEmit --watch",
     "server": "node --loader ts-node/esm src/bff/server.ts",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --quiet",
-    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,md,json}\" --config ./.prettierrc.json"
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,md,json}\" --config ./.prettierrc.json",
+    "codegen": "graphql-codegen --config src/bff/codegen.ts"
   },
   "license": "MIT",
   "dependencies": {
     "@apollo/client": "^3.13.5",
     "@apollo/server": "^4.10.0",
+    "@as-integrations/fastify": "^2.1.1",
     "@heroicons/react": "^2.1.1",
     "@heroui/react": "^2.7.6",
-    "fastify": "^5.2.2",
+    "@vitejs/plugin-react": "^4.3.4",
+    "fastify": "^4.24.3",
     "framer-motion": "^12.6.3",
     "graphql": "^16.10.0",
     "node-fetch": "^3.3.2",
     "react": "^18.2.0",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^5.0.5",
+    "@graphql-codegen/typescript": "^4.1.6",
+    "@graphql-codegen/typescript-resolvers": "^4.5.0",
     "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/typography": "^0.5.10",
     "@types/node": "^20.11.30",
@@ -50,6 +58,5 @@
     "typescript": "^5.0.4",
     "vite": "^6.2.4",
     "vite-tsconfig-paths": "^5.1.4"
-  },
-  "type": "module"
+  }
 }

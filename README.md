@@ -8,8 +8,7 @@ Stay tuned to see what happens with it
 ## Running it
 
 Start the backend server
-`node --loader ts-node/esm src/bff/server.ts`
-
+`npm start server`
 
 Start the frontend
 `npm  start`

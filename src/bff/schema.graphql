@@ -1,0 +1,22 @@
+type Weather {
+    temperature: Float
+    description: String
+    location: String
+    condition: String
+    icon: String
+    humidity: Int
+    windSpeed: Float
+    forecast: [ForecastDay]
+}
+
+type ForecastDay {
+    date: String
+    minTemp: Float
+    maxTemp: Float
+    condition: String
+    icon: String
+}
+
+type Query {
+    getWeather(location: String!): Weather
+}

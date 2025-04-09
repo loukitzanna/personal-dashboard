@@ -1,8 +1,9 @@
 import Fastify, { FastifyInstance } from 'fastify';
 import { ApolloServer } from '@apollo/server';
 import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
-import { typeDefs } from './schema';
-import { weatherResolver } from './resolvers/weatherResolver';
+import { fastifyApolloDrainPlugin, fastifyApolloHandler } from '@as-integrations/fastify';
+import { typeDefs } from './schemaLoader.js';
+import { weatherResolver } from './resolvers/weatherResolver.js';
 
 async function startServer() {
     const fastify: FastifyInstance = Fastify();
@@ -14,27 +15,16 @@ async function startServer() {
                 ...weatherResolver.Query
             }
         },
-        plugins: [ApolloServerPluginDrainHttpServer({ httpServer: fastify.server })]
+        plugins: [
+            ApolloServerPluginDrainHttpServer({ httpServer: fastify.server }),
+            fastifyApolloDrainPlugin(fastify)
+        ]
     });
 
     await server.start();
 
-    // Add GraphQL route
-    fastify.post('/graphql', async (request, reply) => {
-        try {
-            const { query, variables, operationName } = request.body as any;
-
-            const response = await server.executeOperation({
-                query,
-                variables,
-                operationName,
-            });
-
-            return response;
-        } catch (error) {
-            reply.code(500).send(error);
-        }
-    });
+    // Add GraphQL route using Apollo's Fastify integration
+    fastify.post('/graphql', fastifyApolloHandler(server));
 
     try {
         await fastify.listen({ port: 4000, host: '0.0.0.0' });

@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    /* Base Options */
+    "esModuleInterop": true, // Enables interoperability between CommonJS and ES Modules
+    "skipLibCheck": true, // Skip type checking of declaration files
+    "target": "ES2022", // Target modern Node.js versions
+    "allowJs": true, // Allow JavaScript files to be compiled
+    "resolveJsonModule": true, // Include modules imported with .json extension
+    "moduleDetection": "force", // Treat files as modules
+
+    /* Strict Checks */
+    "strict": true, // Enable all strict type-checking options
+
+    /* Module Resolution */
+    "module": "NodeNext", // Use Node.js native ECMAScript modules
+    "moduleResolution": "NodeNext", // Modern module resolution for Node
+
+    /* Output */
+    "outDir": "./dist", // Output directory for compiled JS files
+    "rootDir": "./", // Specify the root directory of input files
+
+    /* Source Maps */
+    "sourceMap": true, // Generate corresponding '.map' file
+
+    /* Other */
+    "forceConsistentCasingInFileNames": true // Disallow inconsistently-cased references to the same file.
+  },
+  "include": ["**/*.ts"], // Files to include in compilation
+  "exclude": ["node_modules"] // Folders/files to exclude
+} 
