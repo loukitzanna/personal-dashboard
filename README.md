@@ -1,3 +1,6 @@
+![image](https://github.com/user-attachments/assets/c7a86901-5c6c-4aa3-a1eb-a0553c70e080)
+
+
 # Personal Dashboard project
 
 The goal of this project is to make an app with using react, graphQL + apollo, and a bff server with fastify
