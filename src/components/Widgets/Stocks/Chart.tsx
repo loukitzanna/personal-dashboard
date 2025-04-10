@@ -17,10 +17,11 @@ const Chart = ({ stockData, timeRange, isPriceUp }) => {
     const options: EChartsOption = {
         grid: {
             show: false,
-            top: 20,
-            left: 40,
-            height: '100%',
-            containLabel: false,
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0,
+            containLabel: true,
         },
         xAxis: {
             type: 'category' as const,
@@ -29,10 +30,16 @@ const Chart = ({ stockData, timeRange, isPriceUp }) => {
             axisLabel: {
                 show: false,
             },
+            splitLine: {
+                show: false,
+            },
         },
         yAxis: {
             type: 'value' as const,
             axisLabel: {
+                show: false,
+            },
+            splitLine: {
                 show: false,
             },
             min: 'dataMin',
@@ -63,8 +70,8 @@ const Chart = ({ stockData, timeRange, isPriceUp }) => {
     };
 
     return (
-        <div className='w-full aspect-square'>
-            <EChart option={options} />
+        <div className='w-full h-full'>
+            <EChart option={options} style={{ width: '100%', height: '100%' }} />
         </div>
     );
 };
