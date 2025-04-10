@@ -41,7 +41,7 @@ export const StocksProvider = ({ children }) => {
 
     const value = {
         selectedStock,
-        ssetSelectedStock: (selectedStock) => updateSettings(setSelectedStock, 'selectedStock', selectedStock),
+        setSelectedStock: (selectedStock) => updateSettings(setSelectedStock, 'selectedStock', selectedStock),
         timeRange,
         setTimeRange: (timeRange) => updateSettings(setTimeRange, 'timeRange', timeRange),
     };

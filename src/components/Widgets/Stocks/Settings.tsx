@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useStocksContext } from './StocksContext';
-import { Button, Form, Input, Radio, RadioGroup, Switch } from '@heroui/react';
+import { Radio, RadioGroup } from '@heroui/react';
 
 const availableStocks = [
     { symbol: 'AAPL', name: 'Apple Inc.' },
@@ -18,7 +18,9 @@ const StocksSettings = () => {
             <RadioGroup
                 label='Select a stock'
                 defaultValue={selectedStock?.symbol}
-                onValueChange={(value) => setSelectedStock(value)}
+                onValueChange={(value) => {
+                    setSelectedStock(availableStocks.find((stock) => stock.symbol === value));
+                }}
             >
                 {availableStocks.map((stock) => (
                     <Radio key={stock.symbol} value={stock.symbol}>

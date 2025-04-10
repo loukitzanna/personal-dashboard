@@ -18,11 +18,14 @@ type ForecastDay {
 }
 
 type StockData {
+    open: Float
     price: Float
     change: Float
     changePercent: Float
     timestamp: String
     historical: [HistoricalData]
+    marketIsOpen: Boolean
+    marketSession: String
 }
 
 type HistoricalData {

@@ -1,18 +1,7 @@
 import React, { useMemo } from 'react';
-import { semanticColors } from '@heroui/theme';
+import { commonColors } from '@heroui/theme';
 import { EChart } from '~ui/EChart';
 import type { EChartsOption } from 'echarts';
-
-let base = +new Date(1968, 9, 3);
-let oneDay = 24 * 3600 * 1000;
-let date = [];
-let data = [Math.random() * 300];
-for (let i = 1; i < 2000; i++) {
-    var now = new Date((base += oneDay));
-    // @ts-ignore
-    date.push([now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'));
-    data.push(Math.round((Math.random() - 0.5) * 20 + data[i - 1]));
-}
 
 const Chart = ({ stockData, timeRange, isPriceUp }) => {
     // Format chart data
@@ -25,19 +14,18 @@ const Chart = ({ stockData, timeRange, isPriceUp }) => {
         [stockData]
     );
 
-    console.log(data);
-
     const options: EChartsOption = {
         grid: {
             top: 20,
             right: 20,
             bottom: 20,
             left: 40,
-            containLabel: true,
+            containLabel: false,
         },
         xAxis: {
             type: 'category' as const,
             data: chartData.map((item) => item.date),
+            boundaryGap: false,
             axisLabel: {
                 show: false,
             },
@@ -45,7 +33,15 @@ const Chart = ({ stockData, timeRange, isPriceUp }) => {
         yAxis: {
             type: 'value' as const,
             axisLabel: {
-                formatter: (value: number) => `$${value.toFixed(2)}`,
+                show: false,
+            },
+            min: (value) => {
+                const range = Math.abs(stockData.change);
+                return Math.min(value.min, stockData.open - range * 1.5);
+            },
+            max: (value) => {
+                const range = Math.abs(stockData.change);
+                return Math.max(value.max, stockData.open + range * 1.5);
             },
         },
         series: [
@@ -55,7 +51,7 @@ const Chart = ({ stockData, timeRange, isPriceUp }) => {
                 symbol: 'none',
                 sampling: 'lttb',
                 itemStyle: {
-                    color: isPriceUp ? '#7CDB4C' : '#FF54A1', // Using direct color values instead of semanticColors
+                    color: isPriceUp ? commonColors.green[600] : commonColors.red[700],
                 },
                 data: chartData.map((item) => item.price),
                 areaStyle: {
