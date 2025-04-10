@@ -48,5 +48,6 @@ declare module 'finnhub' {
     interface MarketStatusData {
         isOpen: boolean;
         session: string;
+        t: string; // timestamp
     }
 }

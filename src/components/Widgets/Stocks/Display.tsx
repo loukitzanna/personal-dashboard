@@ -67,12 +67,12 @@ const DisplayView = () => {
                     <p className='text-lg text-gray-500'>{formatCurrency(stockData.price)}</p>
                 </div>
                 <div>
-                    <p className='text-sm text-gray-500'>{stockData.change}</p>
+                    <p className='text-sm text-gray-500'>{formatCurrency(stockData.change)}</p>
                     <p className='text-sm text-gray-500'>{stockData.changePercent}%</p>
                 </div>
             </div>
 
-            <Chart stockData={stockData} timeRange={timeRange} isPriceUp={stockData.change > 0} />
+            <Chart stockData={stockData} timeRange={timeRange} isPriceUp={stockData.changePercent > 0} />
 
             <div>
                 <ButtonGroup>

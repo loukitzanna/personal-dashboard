@@ -16,10 +16,10 @@ const Chart = ({ stockData, timeRange, isPriceUp }) => {
 
     const options: EChartsOption = {
         grid: {
+            show: false,
             top: 20,
-            right: 20,
-            bottom: 20,
             left: 40,
+            height: '100%',
             containLabel: false,
         },
         xAxis: {
@@ -35,14 +35,8 @@ const Chart = ({ stockData, timeRange, isPriceUp }) => {
             axisLabel: {
                 show: false,
             },
-            min: (value) => {
-                const range = Math.abs(stockData.change);
-                return Math.min(value.min, stockData.open - range * 1.5);
-            },
-            max: (value) => {
-                const range = Math.abs(stockData.change);
-                return Math.max(value.max, stockData.open + range * 1.5);
-            },
+            min: 'dataMin',
+            max: 'dataMax',
         },
         series: [
             {

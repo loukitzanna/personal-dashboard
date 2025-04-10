@@ -53,8 +53,10 @@ export type StockData = {
   historical?: Maybe<Array<Maybe<HistoricalData>>>;
   marketIsOpen?: Maybe<Scalars['Boolean']['output']>;
   marketSession?: Maybe<Scalars['String']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
   open?: Maybe<Scalars['Float']['output']>;
   price?: Maybe<Scalars['Float']['output']>;
+  symbol?: Maybe<Scalars['String']['output']>;
   timestamp?: Maybe<Scalars['String']['output']>;
 };
 
@@ -191,8 +193,10 @@ export type StockDataResolvers<ContextType = Context, ParentType extends Resolve
   historical?: Resolver<Maybe<Array<Maybe<ResolversTypes['HistoricalData']>>>, ParentType, ContextType>;
   marketIsOpen?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
   marketSession?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   open?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   price?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  symbol?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   timestamp?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;

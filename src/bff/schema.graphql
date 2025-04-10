@@ -18,6 +18,8 @@ type ForecastDay {
 }
 
 type StockData {
+    name: String
+    symbol: String
     open: Float
     price: Float
     change: Float

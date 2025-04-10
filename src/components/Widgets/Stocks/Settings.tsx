@@ -8,6 +8,12 @@ const availableStocks = [
     { symbol: 'GOOGL', name: 'Alphabet Inc.' },
     { symbol: 'AMZN', name: 'Amazon.com, Inc.' },
     { symbol: 'META', name: 'Meta Platforms, Inc.' },
+    { symbol: 'NDAQ', name: 'Nasdaq, Inc.' },
+    { symbol: 'TSLA', name: 'Tesla, Inc.' },
+    { symbol: 'NVDA', name: 'NVIDIA Corporation' },
+    { symbol: 'TSM', name: 'Taiwan Semiconductor Manufacturing Company' },
+    { symbol: 'NFLX', name: 'Netflix, Inc.' },
+    { symbol: 'TSLA', name: 'Tesla, Inc.' },
 ];
 
 const StocksSettings = () => {

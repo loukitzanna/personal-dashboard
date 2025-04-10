@@ -25,6 +25,8 @@ export const GET_STOCKS = gql`
     query GetStocks($symbol: String!, $timeRange: String!) {
         stocks(symbol: $symbol, timeRange: $timeRange) {
             open
+            name
+            symbol
             price
             change
             changePercent
